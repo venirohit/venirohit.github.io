@@ -20,6 +20,19 @@
     });
   });
 
+  // ---------- Copy email ----------
+  var copyBtn = $('#copy-email');
+  if (copyBtn && navigator.clipboard) {
+    copyBtn.addEventListener('click', function () {
+      navigator.clipboard.writeText(copyBtn.dataset.email).then(function () {
+        copyBtn.textContent = 'Copied!';
+        setTimeout(function () { copyBtn.textContent = 'Copy email'; }, 1800);
+      });
+    });
+  } else if (copyBtn) {
+    copyBtn.hidden = true;
+  }
+
   // ---------- Rotating tagline ----------
   var rot = $('#rot');
   if (rot && !reduce) {
