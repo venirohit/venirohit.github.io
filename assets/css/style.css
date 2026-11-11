@@ -191,29 +191,18 @@ section h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(1.7re
   80%, 100% { box-shadow: 0 0 0 9px transparent; }
 }
 
-/* Hero: text + network visual */
-.hero-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: 40px; align-items: center; }
-@media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; } .netviz { order: -1; max-width: 300px; margin: 0 auto 8px; } }
-.netviz {
-  position: relative; aspect-ratio: 1 / 1; width: 100%;
-  border-radius: 24px; border: 1px solid var(--line);
-  background:
-    radial-gradient(circle at 50% 45%, var(--accent-soft), transparent 70%),
-    var(--surface);
-  overflow: hidden;
+/* Hero: text + portrait */
+.hero-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: center; }
+.portrait {
+  position: relative; width: 100%; max-width: 360px; justify-self: end;
+  aspect-ratio: 4 / 5; border-radius: 24px; overflow: hidden;
+  border: 6px solid var(--surface);
+  box-shadow: 0 30px 60px -28px rgba(12, 40, 60, .45), 0 0 0 1px var(--line);
 }
-.netviz svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-.netviz .link { stroke: var(--line); stroke-width: 1.4; }
-.netviz .link.hot { stroke: color-mix(in srgb, var(--accent) 45%, var(--line)); }
-.netviz .node { fill: var(--surface); stroke: var(--accent); stroke-width: 2; }
-.netviz .node.core { fill: var(--accent); }
-.netviz .node-ring { fill: none; stroke: var(--accent); opacity: 0; transform-box: fill-box; transform-origin: center; animation: ring 3.2s ease-out infinite; }
-@keyframes ring { 0% { opacity: .6; transform: scale(1); } 100% { opacity: 0; transform: scale(2.6); } }
-.netviz .packet { fill: var(--accent); }
-.netviz .label { font: 600 11px var(--sans); fill: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
-.netviz .photo {
-  position: absolute; inset: 22%; border-radius: 50%; object-fit: cover; width: 56%; height: 56%;
-  border: 4px solid var(--surface); box-shadow: 0 10px 40px rgba(0,0,0,.18);
+.portrait img { display: block; width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 860px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 28px; }
+  .portrait { order: -1; max-width: 240px; justify-self: start; }
 }
 
 /* Rotating tagline phrase */
@@ -257,8 +246,6 @@ section h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(1.7re
 }
 
 /* Contact */
-button.btn { font: inherit; font-size: 0.93rem; font-weight: 600; cursor: pointer; }
-.contact .email-line { margin-top: 18px; font-size: 0.95rem; }
 .contact {
   text-align: center; background: var(--surface); border: 1px solid var(--line);
   border-radius: 24px; padding: 48px 24px;
@@ -270,10 +257,9 @@ button.btn { font: inherit; font-size: 0.93rem; font-weight: 600; cursor: pointe
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
   .reveal.pre { opacity: 1; transform: none; }
-  .netviz .packet { display: none; }
 }
 
 @media print {
-  .progress, .netviz, .contact .actions { display: none; }
+  .progress, .portrait, .contact .actions { display: none; }
   .reveal.pre { opacity: 1; transform: none; }
 }
