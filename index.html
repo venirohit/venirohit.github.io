@@ -23,35 +23,47 @@
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
       <a href="#experience">Experience</a>
+      <a href="#impact">Impact</a>
       <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
     </nav>
   </div>
 </header>
+<div class="progress" aria-hidden="true"></div>
 
 <main>
   <div class="wrap">
 
     <!-- Hero -->
     <div class="hero">
-      <span class="pill">Network Engineer · Service Owner · Seattle, WA</span>
-      <h1>Rohit <em>Veni</em></h1>
-      <p class="tagline">I design and run the networks that connect enterprises to the cloud, <em>and to their AI compute</em>.</p>
-      <p class="lede">
-        Technical lead with <strong>12+ years</strong> building hyperscale cloud networks at
-        <strong>Oracle, Meta and Microsoft</strong>. Today I'm design authority and service owner for
-        <strong>OCI FastConnect</strong>: 100G/400G/800G interconnect across hundreds of production routers in 50+ regions.
-      </p>
-      <div class="actions">
-        <a class="btn btn-primary" href="https://www.linkedin.com/in/venirohit" target="_blank" rel="noopener">Connect on LinkedIn</a>
-        <a class="btn" href="#experience">View experience</a>
-        <a class="btn" href="https://github.com/venirohit" target="_blank" rel="noopener">GitHub</a>
+      <div class="hero-grid">
+        <div>
+          <span class="pill">Network Engineer · Service Owner · Seattle, WA</span>
+          <h1>Rohit <em>Veni</em></h1>
+          <p class="tagline">I design and run the networks that connect enterprises <em class="rot" id="rot">to their AI compute</em>.</p>
+          <p class="lede">
+            Technical lead with <strong>12+ years</strong> building hyperscale cloud networks at
+            <strong>Oracle, Meta and Microsoft</strong>. Today I'm design authority and service owner for
+            <strong>OCI FastConnect</strong>: 100G/400G/800G interconnect across hundreds of production routers in 50+ regions.
+          </p>
+          <div class="actions">
+            <a class="btn btn-primary" href="https://www.linkedin.com/in/venirohit" target="_blank" rel="noopener">Connect on LinkedIn</a>
+            <a class="btn" href="#experience">View experience</a>
+            <a class="btn" href="https://github.com/venirohit" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+        <!-- Animated network. To add a headshot, put the image at assets/img/rohit.jpg and
+             add: <img class="photo" src="assets/img/rohit.jpg" alt="Rohit Veni"> inside this div. -->
+        <div class="netviz" aria-hidden="true">
+          <svg id="net" viewBox="0 0 400 400"></svg>
+        </div>
       </div>
 
       <div class="stats">
-        <div class="stat"><strong>100+ Tbps</strong><span>edge capacity scaled across 50+ OCI regions</span></div>
-        <div class="stat"><strong>60%</strong><span>faster time to resolution with autonomous agents</span></div>
-        <div class="stat"><strong>1,000+</strong><span>end-of-life devices refreshed with no customer impact</span></div>
-        <div class="stat"><strong>200+ hrs</strong><span>of engineer time reclaimed every month</span></div>
+        <div class="stat"><strong data-count="100" data-suffix="+ Tbps">100+ Tbps</strong><span>edge capacity scaled across 50+ OCI regions</span></div>
+        <div class="stat"><strong data-count="60" data-suffix="%">60%</strong><span>lower mean time to resolution with autonomous agents</span></div>
+        <div class="stat"><strong data-count="1000" data-suffix="+">1,000+</strong><span>end-of-life devices refreshed with no customer impact</span></div>
+        <div class="stat"><strong data-count="200" data-suffix="+ hrs">200+ hrs</strong><span>of engineer time reclaimed every month</span></div>
       </div>
     </div>
 
@@ -214,6 +226,23 @@
       </ol>
     </section>
 
+    <!-- Impact -->
+    <section id="impact">
+      <p class="eyebrow">Impact</p>
+      <h2>Results in numbers</h2>
+      <table class="impact">
+        <thead><tr><th>Result</th><th>What I did</th><th>Company</th></tr></thead>
+        <tbody>
+          <tr><td>100+ Tbps</td><td>Scaled FastConnect edge capacity across 50+ regions for enterprise AI and GPU workloads</td><td>Oracle</td></tr>
+          <tr><td>−60% MTTR</td><td>Autonomous agents that triage and remediate customer escalations, reclaiming 200+ engineer-hours a month</td><td>Oracle</td></tr>
+          <tr><td>200 MW</td><td>Greenfield Edge and Core network buildout for a hyperscale data center, zero downtime through turn-up</td><td>Meta</td></tr>
+          <tr><td>−60% TCO</td><td>Replaced 500+ end-of-life devices, moving Cisco ASR9K to Arista 7280/7500</td><td>Microsoft</td></tr>
+          <tr><td>−70% effort</td><td>Ansible automation for global core-router upgrades</td><td>Microsoft</td></tr>
+          <tr><td>50+ engineers</td><td>Mentored through technical boot camps on advanced customer escalations</td><td>Oracle</td></tr>
+        </tbody>
+      </table>
+    </section>
+
     <!-- Education -->
     <section id="education">
       <p class="eyebrow">Education</p>
@@ -232,6 +261,19 @@
       </div>
     </section>
 
+    <!-- Contact -->
+    <section id="contact">
+      <div class="contact">
+        <p class="eyebrow">Contact</p>
+        <h2>Let's connect</h2>
+        <p>Happy to talk about hyperscale interconnect, networking for AI infrastructure, or network automation. LinkedIn is the best way to reach me.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://www.linkedin.com/in/venirohit" target="_blank" rel="noopener">Message me on LinkedIn</a>
+          <a class="btn" href="https://github.com/venirohit" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </section>
+
   </div>
 </main>
 
@@ -242,15 +284,6 @@
   </div>
 </footer>
 
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-  const buttons = document.querySelectorAll('.filters button');
-  const tags = document.querySelectorAll('#skill-tags li');
-  buttons.forEach(btn => btn.addEventListener('click', () => {
-    const f = btn.dataset.filter;
-    buttons.forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
-    tags.forEach(t => { t.hidden = f !== 'all' && t.dataset.cat !== f; });
-  }));
-</script>
+<script src="assets/js/main.js" defer></script>
 </body>
 </html>
